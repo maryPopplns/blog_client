@@ -2,13 +2,23 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [data, setData] = useState();
+  const [blogs, setBlogs] = useState([]);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    (async () => {
-      const result = await fetch('https://knight-blog.herokuapp.com/');
-    })();
+    fetch('https://knight-blog.herokuapp.com/')
+      .then((response) => response.json())
+      .then(({ user, blogs }) => {
+        setUser(user);
+        setBlogs(blogs);
+      })
+      .catch((requestError) => {
+        setError(requestError);
+      });
   }, []);
+
+  const blogPosts = blogs.map((blog) => console.log(blog));
 
   return <div className='App'></div>;
 }

@@ -9,6 +9,7 @@ export default function App() {
     <div className='App'>
       <button onClick={() => setCount((prev) => prev + 1)}>press</button>
       <div>{count}</div>
+      <Link to=''>index</Link>
       <Link to='login'>login</Link>
       <Link to='signup'>sign up</Link>
       <Link to='98502805498'>blogpost</Link>

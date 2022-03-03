@@ -1,6 +1,6 @@
 import './App.scss';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -8,8 +8,8 @@ export default function App() {
   return (
     <div className='App'>
       <button onClick={() => setCount((prev) => prev + 1)}>press</button>
-      <Link to='new'>new one</Link>
       <div>{count}</div>
+      <Outlet />
     </div>
   );
 }

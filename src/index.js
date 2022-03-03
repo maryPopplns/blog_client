@@ -8,7 +8,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/blog_client' element={<App />} />
+        <Route path='/blog_client' element={<App />}>
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path=':blogPost' element={<BlogPost />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

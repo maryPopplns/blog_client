@@ -5,7 +5,7 @@ export default function App() {
   const homeLink = '</Blog>';
   return (
     <div className='App'>
-      <nav>
+      <nav className='main-nav'>
         <ul>
           <li>
             <Link to=''>{homeLink}</Link>

@@ -1,4 +1,4 @@
-// import './App.scss';
+import './App.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className='App'>
       <button onClick={() => setCount((prev) => prev + 1)}>press</button>
-      <Link to='new'>new</Link>
+      <Link to='new'>new one</Link>
       <div>{count}</div>
     </div>
   );

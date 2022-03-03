@@ -1,4 +1,4 @@
-import './App.scss';
+// import './App.scss';
 import { useEffect, useState } from 'react';
 
 function App() {

@@ -1,6 +1,7 @@
 import './App.scss';
 import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,9 +24,11 @@ export default function App() {
               </li>
             </div>
           ) : (
-            <div>hanburger button</div>
+            <li>
+              <div>profile picture</div>
+            </li>
           )}
-          {loggedIn && <h1>logged in</h1>}
+          <FaBars className='hamburger-menu' />
         </ul>
       </nav>
       <button onClick={() => setLoggedIn((prev) => !prev)}>click me</button>

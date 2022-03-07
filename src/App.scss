@@ -1,6 +1,11 @@
+.anchorLink {
+  text-decoration: none;
+  color: black;
+}
+
 .main-nav {
   height: 3rem;
-  background-color: rgb(200, 255, 0);
+  background-color: rgb(0, 255, 251);
   margin-bottom: 0.5rem;
   ul {
     display: flex;
@@ -8,6 +13,9 @@
     align-items: center;
     margin: 0 0.5rem;
     height: 100%;
+  }
+  .homepage-link {
+    font-size: 1.5rem;
   }
   ul .loginSignUpContainer {
     display: none;

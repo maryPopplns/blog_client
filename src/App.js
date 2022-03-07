@@ -11,15 +11,19 @@ export default function App() {
       <nav className='main-nav'>
         <ul>
           <li>
-            <Link to=''>{`</Blog>`}</Link>
+            <Link to='' className='homepage-link anchorLink'>{`</Blog>`}</Link>
           </li>
           {!loggedIn && (
             <div className='loginSignUpContainer'>
               <li>
-                <Link to='login'>Login</Link>
+                <Link to='login' className='login-link anchorLink'>
+                  Login
+                </Link>
               </li>
               <li>
-                <Link to='signup'>Sign Up</Link>
+                <Link to='signup' className='signup-link anchorLink'>
+                  Sign Up
+                </Link>
               </li>
             </div>
           )}

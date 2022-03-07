@@ -6,6 +6,13 @@ import { FaBars } from 'react-icons/fa';
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  function menuHandler() {
+    const container = Array.from(
+      document.getElementsByClassName('loginSignUpContainer')
+    )[0];
+    container.classList.add('translate');
+  }
+
   return (
     <div className='App'>
       <nav className='main-nav'>
@@ -32,7 +39,9 @@ export default function App() {
               <div>picture</div>
             </li>
           )}
-          {!loggedIn && <FaBars className='hamburger-menu' />}
+          {!loggedIn && (
+            <FaBars onClick={menuHandler} className='hamburger-menu' />
+          )}
         </ul>
       </nav>
       <button onClick={() => setLoggedIn((prev) => !prev)}>

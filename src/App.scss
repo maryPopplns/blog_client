@@ -3,8 +3,13 @@
   color: black;
 }
 
-.translate {
+.openModal {
   transform: translateY(150%);
+  transition: transform 1s;
+}
+
+.closeModal {
+  transform: translateY(-150%);
   transition: transform 1s;
 }
 

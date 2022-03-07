@@ -6,19 +6,16 @@ import { FaBars } from 'react-icons/fa';
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  function openModal() {
+  function modalHandler() {
     const container = Array.from(
       document.getElementsByClassName('loginSignUpContainer')
     )[0];
-    container.classList.add('openModal');
-    container.classList.remove('closeModal');
-  }
-  function closeModal() {
-    const container = Array.from(
-      document.getElementsByClassName('loginSignUpContainer')
+    const overlay = Array.from(
+      document.getElementsByClassName('modalOverlay')
     )[0];
-    container.classList.add('closeModal');
-    container.classList.remove('openModal');
+    overlay.classList.toggle('openModalOverlay');
+    container.classList.toggle('closeModal');
+    container.classList.toggle('openModal');
   }
 
   return (
@@ -31,25 +28,34 @@ export default function App() {
           {!loggedIn && (
             <div className='loginSignUpContainer closeModal'>
               <li>
-                <Link to='login' className='login-link anchorLink'>
+                <Link
+                  to='login'
+                  className='login-link anchorLink'
+                  onClick={modalHandler}
+                >
                   Login
                 </Link>
               </li>
               <li>
-                <Link to='signup' className='signup-link anchorLink'>
+                <Link
+                  to='signup'
+                  className='signup-link anchorLink'
+                  onClick={modalHandler}
+                >
                   Sign Up
                 </Link>
               </li>
-              <button onClick={closeModal}>close</button>
+              <button onClick={modalHandler}>close</button>
             </div>
           )}
+          <div className='modalOverlay'></div>
           {loggedIn && (
             <li>
               <div>picture</div>
             </li>
           )}
           {!loggedIn && (
-            <FaBars onClick={openModal} className='hamburger-menu' />
+            <FaBars onClick={modalHandler} className='hamburger-menu' />
           )}
         </ul>
       </nav>

@@ -3,14 +3,13 @@
   color: black;
 }
 
-.openModal {
-  transform: translateY(150%);
-  transition: transform 1s;
-}
-
-.closeModal {
-  transform: translateY(-150%);
-  transition: transform 1s;
+@-webkit-keyframes blur {
+  0% {
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    -webkit-filter: blur(3px);
+  }
 }
 
 // mobile
@@ -27,11 +26,30 @@
   }
   .loginSignUpContainer {
     position: fixed;
-    background-color: red;
+    background-color: rgb(255, 121, 121);
     left: 15%;
     width: 70%;
     top: -25%;
     height: 25%;
+    z-index: 1;
+  }
+  .openModalOverlay {
+    position: fixed;
+    backdrop-filter: blur(2px);
+    // transition: backdrop-filter 0.75s;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  .openModal {
+    transform: translateY(150%);
+    transition: transform 0.75s;
+  }
+  .closeModal {
+    transform: translateY(-150%);
+    transition: transform 0.75s;
   }
   .homepage-link {
     font-size: 1.5rem;

@@ -1,10 +1,12 @@
 .main-nav {
   height: 3rem;
-  background-color: red;
+  background-color: rgb(200, 255, 0);
+  margin-bottom: 0.5rem;
   ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 0.5rem;
     height: 100%;
   }
   ul .loginSignUpContainer {

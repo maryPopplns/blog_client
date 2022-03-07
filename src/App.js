@@ -5,16 +5,15 @@ import { FaBars } from 'react-icons/fa';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const homeLink = '</Blog>';
 
   return (
     <div className='App'>
       <nav className='main-nav'>
         <ul>
           <li>
-            <Link to=''>{homeLink}</Link>
+            <Link to=''>{`</Blog>`}</Link>
           </li>
-          {loggedIn && (
+          {!loggedIn && (
             <div className='loginSignUpContainer'>
               <li>
                 <Link to='login'>Login</Link>
@@ -24,15 +23,17 @@ export default function App() {
               </li>
             </div>
           )}
-          {!loggedIn && (
+          {loggedIn && (
             <li>
-              <div>profile picture</div>
+              <div>picture</div>
             </li>
           )}
-          {loggedIn && <FaBars className='hamburger-menu' />}
+          {!loggedIn && <FaBars className='hamburger-menu' />}
         </ul>
       </nav>
-      <button onClick={() => setLoggedIn((prev) => !prev)}>click me</button>
+      <button onClick={() => setLoggedIn((prev) => !prev)}>
+        {loggedIn ? 'logout' : 'login'}
+      </button>
       <Outlet />
     </div>
   );

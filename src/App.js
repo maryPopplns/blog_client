@@ -14,7 +14,7 @@ export default function App() {
           <li>
             <Link to=''>{homeLink}</Link>
           </li>
-          {loggedIn ? (
+          {loggedIn && (
             <div className='loginSignUpContainer'>
               <li>
                 <Link to='login'>Login</Link>
@@ -23,12 +23,13 @@ export default function App() {
                 <Link to='signup'>Sign Up</Link>
               </li>
             </div>
-          ) : (
+          )}
+          {!loggedIn && (
             <li>
               <div>profile picture</div>
             </li>
           )}
-          <FaBars className='hamburger-menu' />
+          {loggedIn && <FaBars className='hamburger-menu' />}
         </ul>
       </nav>
       <button onClick={() => setLoggedIn((prev) => !prev)}>click me</button>

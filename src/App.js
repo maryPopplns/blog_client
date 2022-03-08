@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     function resizeHandler() {
-      // close modal and removes overlay (window.length > 765px)
+      // close modal & removes overlay (when window.length > 765px)
       const modal = Array.from(
         document.getElementsByClassName('loginSignUpContainer')
       )[0];
@@ -28,7 +28,7 @@ export default function App() {
   }, []);
 
   function modalHandler() {
-    // opens/closes modal
+    // opens & closes modal
     const container = Array.from(
       document.getElementsByClassName('loginSignUpContainer')
     )[0];
@@ -87,9 +87,6 @@ export default function App() {
           )}
         </ul>
       </nav>
-      <button onClick={() => setLoggedIn((prev) => !prev)}>
-        {loggedIn ? 'logout' : 'login'}
-      </button>
       <Outlet />
     </div>
   );

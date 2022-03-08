@@ -1,18 +1,20 @@
 import './App.scss';
 import { Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaRegTimesCircle } from 'react-icons/fa';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     function resizeHandler() {
+      // close modal and removes overlay (window.length > 765px)
       const modal = Array.from(
         document.getElementsByClassName('loginSignUpContainer')
       )[0];
-      const isOpen = Array.from(modal.classList).includes('openModal');
-      if (window.innerWidth >= 765 && isOpen) {
+      const modalIsOpen = Array.from(modal.classList).includes('openModal');
+
+      if (window.innerWidth >= 765 && modalIsOpen) {
         const overlay = Array.from(
           document.getElementsByClassName('modalOverlay')
         )[0];
@@ -21,10 +23,12 @@ export default function App() {
         modal.classList.add('closeModal');
       }
     }
+
     window.addEventListener('resize', resizeHandler);
   }, []);
 
   function modalHandler() {
+    // opens/closes modal
     const container = Array.from(
       document.getElementsByClassName('loginSignUpContainer')
     )[0];
@@ -51,7 +55,7 @@ export default function App() {
               <li>
                 <Link
                   to='login'
-                  className='login-link anchorLink'
+                  className='auth-link anchorLink'
                   onClick={modalHandler}
                 >
                   Login
@@ -60,15 +64,16 @@ export default function App() {
               <li>
                 <Link
                   to='signup'
-                  className='signup-link anchorLink'
+                  className='auth-link anchorLink'
                   onClick={modalHandler}
                 >
                   Sign Up
                 </Link>
               </li>
-              <button className='closeModalButton' onClick={modalHandler}>
-                close
-              </button>
+              <FaRegTimesCircle
+                className='closeModalButton'
+                onClick={modalHandler}
+              />
             </div>
           )}
           <div className='modalOverlay'></div>

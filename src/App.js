@@ -1,10 +1,28 @@
 import './App.scss';
 import { Link, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    function resizeHandler() {
+      const modal = Array.from(
+        document.getElementsByClassName('loginSignUpContainer')
+      )[0];
+      const isOpen = Array.from(modal.classList).includes('openModal');
+      if (window.innerWidth >= 765 && isOpen) {
+        const overlay = Array.from(
+          document.getElementsByClassName('modalOverlay')
+        )[0];
+        overlay.classList.remove('openModalOverlay');
+        modal.classList.remove('openModal');
+        modal.classList.add('closeModal');
+      }
+    }
+    window.addEventListener('resize', resizeHandler);
+  }, []);
 
   function modalHandler() {
     const container = Array.from(
@@ -13,9 +31,12 @@ export default function App() {
     const overlay = Array.from(
       document.getElementsByClassName('modalOverlay')
     )[0];
-    overlay.classList.toggle('openModalOverlay');
-    container.classList.toggle('closeModal');
-    container.classList.toggle('openModal');
+    const length = window.innerWidth;
+    if (length < 765) {
+      overlay.classList.toggle('openModalOverlay');
+      container.classList.toggle('closeModal');
+      container.classList.toggle('openModal');
+    }
   }
 
   return (
@@ -45,7 +66,9 @@ export default function App() {
                   Sign Up
                 </Link>
               </li>
-              <button onClick={modalHandler}>close</button>
+              <button className='closeModalButton' onClick={modalHandler}>
+                close
+              </button>
             </div>
           )}
           <div className='modalOverlay'></div>

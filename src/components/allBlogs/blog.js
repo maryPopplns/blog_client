@@ -1,10 +1,13 @@
+import { Link, Outlet } from 'react-router-dom';
+import './blog.scss';
+
 export default function singlePost({ blog }) {
-  const { title, body } = blog;
+  const { _id, title, body } = blog;
 
   return (
-    <div className='singlePost'>
-      {/* <div>{decodeURIComponent(title)}</div> */}
-      <div style={{ marginTop: '1rem' }}>{decodeURIComponent(body)}</div>
-    </div>
+    <Link to={_id} className='singlePost'>
+      <div className='blogTitle'>{title}</div>
+      <div className='blogBody'>{body}</div>
+    </Link>
   );
 }

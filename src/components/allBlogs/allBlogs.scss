@@ -1,3 +1,11 @@
 .allPosts {
-  background-color: red;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  height: calc(100% - 3rem);
+  width: 100%;
+  background-color: black;
+  overflow-y: auto;
 }

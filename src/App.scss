@@ -8,11 +8,18 @@ $blue-green: #72efdd;
   color: black;
 }
 
+#root {
+  height: 100vh;
+}
+
+.App {
+  height: 100%;
+}
+
 // mobile
 .main-nav {
   height: 3rem;
   background-color: $blue-green;
-  margin-bottom: 0.5rem;
   ul {
     display: flex;
     justify-content: space-between;

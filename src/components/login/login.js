@@ -5,21 +5,26 @@ import './login.scss';
 export default function Login() {
   return (
     <div className='login'>
-      <form action='https://knight-blog.herokuapp.com/login/local'>
-        <div classname='username-field'>
-          <label for='username'>Username</label>
+      <form
+        method='POST'
+        action='https://knight-blog.herokuapp.com/login/local'
+      >
+        <div className='username-field'>
+          <label htmlFor='username'>Username</label>
           <input type='text' id='username' name='username'></input>
         </div>
         <div className='password-field'>
-          <label for='password'>Password</label>
-          <input type='text' id='password' name='password'></input>
+          <label htmlFor='password'>Password</label>
+          <input type='password' id='password' name='password'></input>
         </div>
-        <button type='submit'>submit</button>
+        <input type='submit'></input>
       </form>
-      <a href='https://knight-blog.herokuapp.com/login/google'>google</a>
+      <a
+        className='google-login'
+        href='https://knight-blog.herokuapp.com/login/google'
+      >
+        Google Login
+      </a>
     </div>
   );
 }
-
-// create a form to login with username/password
-//  create a button to login to google

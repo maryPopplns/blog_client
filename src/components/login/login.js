@@ -1,33 +1,19 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { urlencoded, networkRequest } from './helpers';
 import './login.scss';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   async function submitFormHandler(event) {
     event.preventDefault();
-    const loginData = { username, password };
-    let formBody = [];
-    for (const property in loginData) {
-      const encodedKey = encodeURIComponent(property);
-      const encodedValue = encodeURIComponent(loginData[property]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
-
-    fetch('https://knight-blog.herokuapp.com/login/local', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formBody,
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      .catch((error) => console.log(error));
+    const URL = 'https://knight-blog.herokuapp.com/login/local';
+    const verb = 'POST';
+    const loginInfo = urlencoded({ username, password });
+    networkRequest(URL, verb, loginInfo, setError);
   }
 
   return (
@@ -54,6 +40,7 @@ export default function Login() {
           ></input>
         </div>
         <input type='submit'></input>
+        {error && <div>There was an error</div>}
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { urlencoded } from './helpers';
+import { urlencoded } from '../helpers';
 import './login.scss';
 
 export default function Login() {
@@ -9,7 +9,7 @@ export default function Login() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  async function submitFormHandler(event) {
+  function submitFormHandler(event) {
     event.preventDefault();
     const loginInfo = urlencoded({ username, password });
 

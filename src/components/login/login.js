@@ -1,19 +1,39 @@
 import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { urlencoded, networkRequest } from './helpers';
+import { useNavigate } from 'react-router-dom';
+import { urlencoded } from './helpers';
 import './login.scss';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   async function submitFormHandler(event) {
     event.preventDefault();
-    const URL = 'https://knight-blog.herokuapp.com/login/local';
-    const verb = 'POST';
     const loginInfo = urlencoded({ username, password });
-    networkRequest(URL, verb, loginInfo, setError);
+
+    fetch('https://knight-blog.herokuapp.com/login/local', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: loginInfo,
+    })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error();
+        } else {
+          setError(false);
+          return response.json();
+        }
+      })
+      .then(({ token }) => {
+        const myStorage = window.localStorage;
+        myStorage.setItem('knightBlogToken', token);
+        navigate('/blog_client');
+      })
+      .catch((error) => setError(true));
   }
 
   return (
